@@ -127,7 +127,8 @@ gtag('config','G-Y2D060K2Z4');
   .nav-btn{display:inline-flex;align-items:center;gap:5px;background:none;border:0;cursor:pointer;padding:0}
   .nav-btn svg{transition:transform .2s}
   .nav-item.open .nav-btn svg{transform:rotate(180deg)}
-  .nav-drop{position:absolute;top:100%;left:0;padding-top:14px;display:none}
+  /* padding = невидимый мостик через зазор кнопка↔меню (в т.ч. запас слева на диагональ курсора) */
+  .nav-drop{position:absolute;top:100%;left:-18px;padding:14px 0 0 18px;display:none}
   .nav-item.open .nav-drop{display:block}
   @media (hover:hover){.nav-item:hover .nav-drop{display:block}.nav-item:hover .nav-btn svg{transform:rotate(180deg)}}
   .nav-drop-in{min-width:220px;background:#fff;border-radius:12px;padding:8px;
