@@ -179,7 +179,7 @@ gtag('config','G-Y2D060K2Z4');
   .val p{font-size:14.5px;line-height:1.65;color:#55555A}
 
   /* ─── КАРТОЧКИ КОМАНДЫ (в hero) ─── */
-  .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:880px;margin:0 auto}
+  .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
   .tcard{background:#fff;color:#212121;border-radius:18px;overflow:hidden;
          display:flex;flex-direction:column;box-shadow:0 18px 46px rgba(0,0,0,.35)}
   .tcard .ph{aspect-ratio:3/4;overflow:hidden;background:linear-gradient(160deg,#E9EDF9 0%,#F4F5F9 70%)}
@@ -197,7 +197,9 @@ gtag('config','G-Y2D060K2Z4');
   .mentors{background:#fff;padding:100px 0}
   .mentors-head{text-align:center;margin-bottom:50px}
   .mentors-head p{font-size:16.5px;line-height:1.7;color:#6B6B70;margin-top:16px;max-width:640px;margin-left:auto;margin-right:auto}
-  .mentors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1160px;margin:0 auto}
+  /* flex, а не grid: карточек 7 — неполный последний ряд центрируется, а не липнет влево */
+  .mentors-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1160px;margin:0 auto}
+  .mentors-grid .mcard{flex:0 1 calc(25% - 15px)}
   .mcard{background:var(--paper);border:1px solid #ECECEF;border-radius:18px;overflow:hidden;
          display:flex;flex-direction:column}
   .mcard .ph{aspect-ratio:1/1;overflow:hidden;background:linear-gradient(160deg,#E9EDF9 0%,#F4F5F9 70%)}
@@ -291,10 +293,8 @@ gtag('config','G-Y2D060K2Z4');
 
   /* ─── МОБИЛКА ─── */
   @media (max-width:1020px){
-    .team-grid{grid-template-columns:repeat(2,1fr);max-width:none}
-    /* третья карточка команды одна в ряду — центрируем, чтобы не липла к левому краю */
-    .team-grid .tcard:last-child{grid-column:span 2;justify-self:center;width:calc(50% - 11px)}
-    .mentors-grid{grid-template-columns:repeat(2,1fr)}
+    .team-grid{grid-template-columns:repeat(2,1fr)}
+    .mentors-grid .mcard{flex-basis:calc(50% - 10px)}
     .values-grid{grid-template-columns:repeat(2,1fr)}
     .facts-in{grid-template-columns:repeat(2,1fr);gap:30px 20px}
     .story-in{grid-template-columns:1fr;gap:44px}
@@ -315,7 +315,6 @@ gtag('config','G-Y2D060K2Z4');
     .accr{padding:70px 0}
     .faq{padding:0 0 70px}
     .team-grid{grid-template-columns:1fr}
-    .team-grid .tcard:last-child{grid-column:auto;width:auto}
     .values-grid{grid-template-columns:1fr}
     .quotes-grid{grid-template-columns:1fr}
     .facts-in{grid-template-columns:repeat(2,1fr)}
@@ -594,6 +593,16 @@ gtag('config','G-Y2D060K2Z4');
     <p class="ht-label">Основная команда</p>
     <div class="team-grid">
       <div class="tcard">
+        <div class="ph"><img src="assets/baranova.jpg" alt="Саша Баранова" width="675" height="900" style="object-position:top"></div>
+        <div class="in">
+          <div class="name">Саша Баранова</div>
+          <div class="role">коуч PCC ICF · методолог академии</div>
+          <p class="note">Со-автор программ и со-тренер Алексея: вместе ведут Level 1, Level 2
+             и CCE-курс «Профессия коуч». Собирает методологию — то, как обучение устроено внутри.</p>
+          <span class="chip">психолог</span>
+        </div>
+      </div>
+      <div class="tcard">
         <div class="ph"><img src="assets/snetkova.jpg" alt="Екатерина Снеткова" width="768" height="1143" style="object-position:top"></div>
         <div class="in">
           <div class="name">Екатерина Снеткова</div>
@@ -676,16 +685,10 @@ gtag('config','G-Y2D060K2Z4');
       <p class="sec-eyebrow" style="justify-content:center">Преподавательский круг</p>
       <h2 class="sec-title">И люди, с которыми мы делаем программы</h2>
       <p>Это не штатная команда, а профессиональный круг академии: приглашённые тренеры
-         уровня MCC, методологи, супервизоры и асессоры ICF — люди, с которыми проходят
+         уровня MCC, менторы, супервизоры и асессоры ICF — люди, с которыми проходят
          ваши тренинги, менторинги и супервизии на Level 1 и Level 2.</p>
     </div>
     <div class="mentors-grid">
-      <div class="mcard">
-        <div class="ph"><img src="assets/baranova.jpg" alt="Саша Баранова" width="675" height="900" loading="lazy"></div>
-        <div class="in"><div class="name">Саша Баранова</div>
-          <div class="cred">коуч PCC ICF</div>
-          <div class="role">со-автор программ, методолог, психолог</div></div>
-      </div>
       <div class="mcard">
         <div class="ph"><img src="assets/vilkovskaya.jpg" alt="Ольга Вильковская" width="675" height="900" loading="lazy"></div>
         <div class="in"><div class="name">Ольга Вильковская</div>
