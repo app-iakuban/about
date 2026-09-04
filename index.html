@@ -26,11 +26,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
   window.cookiehub.load(cpm);
 });
 </script>
-<!-- Google Analytics (GA4) G-Y2D060K2Z4 -->
+<!-- Google Analytics (GA4) G-Y2D060K2Z4 + Google Ads AW-17650633966 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2D060K2Z4"></script>
 <script>
 gtag('js',new Date());
 gtag('config','G-Y2D060K2Z4');
+gtag('config','AW-17650633966');
 </script>
 <!-- Yandex.Metrika 109783359 — разблокируется CookieHub'ом только при согласии на analytics;
      вебвизор выключен (отдельного согласия на запись сессий нет) -->
@@ -41,9 +42,9 @@ gtag('config','G-Y2D060K2Z4');
   (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
   ym(109783359,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:false});
 </script>
-<title>О нас — академия коучинга Алексея Якубана | Iakuban Coaching Academy</title>
+<title>О нас: академия коучинга Алексея Якубана | Iakuban Coaching Academy</title>
 <meta name="description" content="Iakuban Coaching Academy — академия коучинга Алексея Якубана с аккредитацией ICF. Наша миссия: сделать так, чтобы вы реализовали свою миссию, а ваша миссия реализовала вас. Барселона · онлайн по всему миру.">
-<meta property="og:title" content="О нас — академия коучинга Алексея Якубана">
+<meta property="og:title" content="О нас: академия коучинга Алексея Якубана">
 <meta property="og:description" content="Академия коучинга Алексея Якубана с аккредитацией ICF Level 1 и Level 2. Наша миссия — сделать так, чтобы вы реализовали свою миссию, а ваша миссия реализовала вас.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://iakuban.com/about/">
@@ -407,9 +408,10 @@ gtag('config','G-Y2D060K2Z4');
 .ih-m-sub.is-open{display:flex}
 .ih-m-sub a{padding:8px 0;font-size:14px;color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
 .ih-m-sub a:hover,.ih-m-sub a[aria-current="page"]{color:#fff}
-.ih-mobile>.ih-m-list>a{padding:12px 0;font-size:16px;color:rgba(255,255,255,.7);
+/* только текстовые пункты: у кнопок .ih-btn-* свои цвета и паддинги */
+.ih-mobile>.ih-m-list>a:not([class*="ih-btn-"]){padding:12px 0;font-size:16px;color:rgba(255,255,255,.7);
   text-decoration:none;transition:color .2s}
-.ih-mobile>.ih-m-list>a:hover{color:#fff}
+.ih-mobile>.ih-m-list>a:not([class*="ih-btn-"]):hover{color:#fff}
 .ih-mobile .ih-btn-cta,.ih-mobile .ih-btn-solid,.ih-mobile .ih-btn-outline{margin-top:10px;width:100%}
 
 @media (max-width:767px){
@@ -434,8 +436,8 @@ gtag('config','G-Y2D060K2Z4');
 .ih-light .ih-btn-solid:hover{background:#333340}
 .ih-light .ih-burger{color:#28345B}
 .ih-light .ih-mobile{border-top-color:rgba(196,207,223,.6)}
-.ih-light .ih-m-btn,.ih-light .ih-mobile>.ih-m-list>a{color:#4C587D}
-.ih-light .ih-m-btn:hover,.ih-light .ih-mobile>.ih-m-list>a:hover{color:#28345B}
+.ih-light .ih-m-btn,.ih-light .ih-mobile>.ih-m-list>a:not([class*="ih-btn-"]){color:#4C587D}
+.ih-light .ih-m-btn:hover,.ih-light .ih-mobile>.ih-m-list>a:not([class*="ih-btn-"]):hover{color:#28345B}
 .ih-light .ih-m-sub a{color:#626C8E}
 .ih-light .ih-m-sub a:hover,.ih-light .ih-m-sub a[aria-current="page"]{color:#28345B}
 .ih-light a:focus-visible,.ih-light button:focus-visible{outline-color:#3D3DF0}
@@ -455,8 +457,8 @@ gtag('config','G-Y2D060K2Z4');
               <div class="ih-dd-menu" role="menu">
           <a href="https://iakuban.com/coaching-from-zero/">Введение в коучинг</a>
           <a href="https://iakuban.com/coaching-as-a-business/">Профессия коуч</a>
-          <a href="https://iakuban.com/icf-level-1/">ICF Level 1</a>
-          <a href="https://iakuban.com/icf-level-2/">ICF Level 2</a>
+          <a href="https://iakuban.com/icf-level-1/">Магия и Наука Коучинга. Level 1</a>
+          <a href="https://iakuban.com/icf-level-2/">Путь Алхимика. Level 2</a>
               </div>
             </div>
           </div>
@@ -472,8 +474,8 @@ gtag('config','G-Y2D060K2Z4');
           <div class="ih-m-sub">
           <a href="https://iakuban.com/coaching-from-zero/">Введение в коучинг</a>
           <a href="https://iakuban.com/coaching-as-a-business/">Профессия коуч</a>
-          <a href="https://iakuban.com/icf-level-1/">ICF Level 1</a>
-          <a href="https://iakuban.com/icf-level-2/">ICF Level 2</a>
+          <a href="https://iakuban.com/icf-level-1/">Магия и Наука Коучинга. Level 1</a>
+          <a href="https://iakuban.com/icf-level-2/">Путь Алхимика. Level 2</a>
           </div>
           <a href="https://iakuban.com/about/" aria-current="page">О нас</a>
         <a class="ih-btn-outline" href="https://app.iakuban.com/login">Войти</a>
@@ -570,7 +572,70 @@ gtag('config','G-Y2D060K2Z4');
     if(mSub){ mSub.classList.remove('is-open'); mBtn.setAttribute('aria-expanded','false'); }
   });
 })();
+
+/* ─── Код визита для Telegram-CTA (сквозная атрибуция лидов) ───
+   Визиту присваивается код XXXXX, он дописывается в префилл всех ссылок
+   t.me/iakuban_team. По клику код вместе с UTM исходного захода уходит в
+   access-лог сервера (HEAD-запрос) и в GA4 (событие tg_lead_code).
+   Разбор и схема: Marketing/operations/2026-08-23_lead_attribution_szilviya.md
+
+   ⚠️ Подпись кода зависит от воронки. На страницах «Профессии коуч» префилл
+   несёт «Мой код: <КОД ИСТОЧНИКА>» и отвечает автоответчик (ветка
+   pk_onboarding): слово «Заявка» — его стоп-слово, при нём бот молчит и лид
+   уходит менеджеру. Таким ссылкам дописываем «Визит №», остальным (Level 1/2,
+   где как раз нужен менеджер) — привычную менеджерам «Заявку №».
+   Схема воронки ПК: Marketing/scenarios/pk_funnel_entry.md */
+(function(){
+  var TG = 'https://t.me/iakuban_team';
+
+  function get(k){ try { return sessionStorage.getItem(k); } catch(e){ return null; } }
+  function set(k,v){ try { sessionStorage.setItem(k,v); } catch(e){} }
+
+  // источник запоминаем на первой странице визита: дальше по сайту query теряется
+  if(/[?&](utm_|gclid|yclid|gad_|fbclid)/.test(location.search) && !get('ihLeadSrc')){
+    set('ihLeadSrc', location.search.slice(1));
+  }
+
+  var code = get('ihLeadCode');
+  if(!code){
+    // без похожих друг на друга символов: код диктуют голосом и переписывают руками
+    var abc = 'ABCEHKMPTXY2345679';
+    code = '';
+    for(var i=0;i<5;i++) code += abc.charAt(Math.floor(Math.random()*abc.length));
+    set('ihLeadCode', code);
+  }
+
+  function decorate(){
+    var links = document.querySelectorAll('a[href^="' + TG + '"]');
+    for(var i=0;i<links.length;i++){
+      try{
+        var u = new URL(links[i].href);
+        var t = u.searchParams.get('text');
+        if(!t || t.indexOf('Заявка №') !== -1 || t.indexOf('Визит №') !== -1) continue;
+        var label = t.indexOf('Мой код:') !== -1 ? 'Визит №' : 'Заявка №';
+        links[i].href = u.origin + u.pathname + '?text=' + encodeURIComponent(t + '\n\n' + label + code);
+      }catch(e){}
+    }
+  }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', decorate);
+  else decorate();
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="https://t.me/"]');
+    if(!a) return;
+    var q = 'ihlc=' + code +
+      '&src=' + encodeURIComponent(get('ihLeadSrc') || '') +
+      '&ref=' + encodeURIComponent(document.referrer || '');
+    try { fetch(location.pathname + '?' + q, {method:'HEAD', keepalive:true, cache:'no-store'}); } catch(err){}
+    try { gtag('event','tg_lead_code',{'lead_code': code, 'transport_type':'beacon'}); } catch(err){}
+  }, true);
+})();
 </script>
+<!-- ИИ-помощник академии. Файл отдаётся Nuxt-слоем с корня домена, поэтому один
+     и тот же виджет работает и здесь, и на страницах платформы. Подключение
+     живёт в шапке, потому что она уже разъезжается по всем лендингам одной
+     командой и другого общего блока у статики нет. -->
+<script src="https://iakuban.com/chat-widget.js?v=20260904-2" defer></script>
 <!-- IH-HEADER:END -->
 
 <main>
@@ -601,25 +666,25 @@ gtag('config','G-Y2D060K2Z4');
         <div class="ph"><img src="assets/snetkova.jpg?v=2" alt="Екатерина Снеткова" width="576" height="768"></div>
         <div class="in">
           <div class="name">Екатерина Снеткова</div>
-          <div class="role">коуч ICF Level 1 · куратор программ</div>
+          <div class="role">коуч по стандартам ICF · куратор программ</div>
           <p class="note">Фея, ангел и крёстная — так её называют студенты на выпускных.
              Держит на себе расписание, сертификаты и заботу о каждом потоке.</p>
         </div>
       </div>
       <div class="tcard">
-        <div class="ph"><img src="assets/polina2.jpg" alt="Полина Карташова" width="640" height="640" style="object-position:top"></div>
+        <div class="ph"><img src="assets/polina3.jpg" alt="Полина Карташова" width="640" height="640" style="object-position:top"></div>
         <div class="in">
           <div class="name">Полина Карташова</div>
-          <div class="role">коуч ICF Level 1 · коммуникации</div>
+          <div class="role">коуч по стандартам ICF · коммуникации</div>
           <p class="note">Если вы напишете академии в Telegram — скорее всего, ответит именно она.
              Пришла студенткой второго потока и осталась в команде.</p>
         </div>
       </div>
       <div class="tcard">
-        <div class="ph"><img src="assets/volobueva2.jpg" alt="Екатерина Волобуева" width="640" height="640" style="object-position:top"></div>
+        <div class="ph"><img src="assets/volobueva3.jpg" alt="Екатерина Волобуева" width="640" height="640" style="object-position:top"></div>
         <div class="in">
           <div class="name">Екатерина Волобуева</div>
-          <div class="role">коуч ICF Level 1</div>
+          <div class="role">коуч по стандартам ICF</div>
           <p class="note">В академии с первых дней. На установочной встрече помогает понять,
              какая программа подходит именно вам — без давления и «дожимов».</p>
         </div>
@@ -633,7 +698,7 @@ gtag('config','G-Y2D060K2Z4');
   <div class="facts-in">
     <div class="fact"><div class="n">3</div><div class="d">программы аккредитованы ICF — Level 1, Level 2 и CCE</div></div>
     <div class="fact"><div class="n">1000+</div><div class="d">выпускников стартовых программ академии</div></div>
-    <div class="fact"><div class="n">65+</div><div class="d">выпускников программы ICF Level 1</div></div>
+    <div class="fact"><div class="n">65+</div><div class="d">выпускников программы «Магия и Наука Коучинга»</div></div>
     <div class="fact"><div class="n">9,8 из 10</div><div class="d">средняя оценка обучения студентами</div></div>
   </div>
   <p class="facts-note">И мы молодые: день рождения академии — <b>16 августа 2025 года</b>,
@@ -714,7 +779,7 @@ gtag('config','G-Y2D060K2Z4');
       <div class="mcard">
         <div class="ph"><img src="assets/koptyaeva.jpg" alt="Ольга Коптяева" width="640" height="640" loading="lazy"></div>
         <div class="in"><div class="name">Ольга Коптяева</div>
-          <div class="cred">коуч ICF Level 2</div>
+          <div class="cred">коуч по стандартам ICF</div>
           <div class="role">тимлид команды ассистентов Level 2</div></div>
       </div>
       <div class="mcard">
@@ -765,15 +830,15 @@ gtag('config','G-Y2D060K2Z4');
     <div class="quotes-grid">
       <div class="qcard"><p>Вся подготовка от А до Я на высшем уровне: программа, сильная команда, просто делай.</p>
         <div class="who"><img src="assets/tamilla.jpg" alt="Тамилла Бухмиллер" width="52" height="52" loading="lazy">
-          <div><div class="name">Тамилла Бухмиллер</div><div class="role">клинический психолог, психотерапевт, коуч ICF Level 1</div></div></div></div>
+          <div><div class="name">Тамилла Бухмиллер</div><div class="role">клинический психолог, психотерапевт, коуч по стандартам ICF</div></div></div></div>
       <div class="qcard"><p>Алексей — шикарная ролевая модель педагога. Выстроенный процесс, всё чётко и ясно.
           Атмосфера взрослых, принимающих людей.</p>
         <div class="who"><img src="assets/yaromila.jpg" alt="Яромила Юланова" width="52" height="52" loading="lazy">
-          <div><div class="name">Яромила Юланова</div><div class="role">предприниматель, 200 человек в штате, психолог, коуч ICF Level 1</div></div></div></div>
+          <div><div class="name">Яромила Юланова</div><div class="role">предприниматель, 200 человек в штате, психолог, коуч по стандартам ICF</div></div></div></div>
       <div class="qcard"><p>Там такая команда собирается, с кем мне хотелось бы дальше быть. Невероятное окружение,
           которое стоит намного дороже, чем весь курс.</p>
         <div class="who"><img src="assets/timonina.jpg" alt="Ольга Тимонина" width="52" height="52" loading="lazy">
-          <div><div class="name">Ольга Тимонина</div><div class="role">предприниматель, коуч ICF Level 1</div></div></div></div>
+          <div><div class="name">Ольга Тимонина</div><div class="role">предприниматель, коуч по стандартам ICF</div></div></div></div>
     </div>
   </div>
 </section>
@@ -791,6 +856,8 @@ gtag('config','G-Y2D060K2Z4');
            менторинг и супервизии соответствуют требованиям федерации.</p>
         <p>Часы обучения засчитываются при международной сертификации коуча —
            от ACC до PCC. Ваш сертификат понятен клиентам и работодателям в любой стране.</p>
+        <!-- Перелинковка на гайд о профессии (SEO, 29.08.2026) -->
+        <p>Как устроена сама система квалификаций, сколько часов практики нужно на каждом уровне и во что обходится подача заявки: <a href="https://iakuban.com/kak-stat-kouchem-icf/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">как стать коучем ICF</a>, разбор пути по шагам.</p>
       </div>
       <div class="accr-badges">
         <img src="assets/icf_l1.png" alt="Бейдж ICF-аккредитации программы Level 1" width="150" height="150" loading="lazy">
@@ -833,12 +900,12 @@ gtag('config','G-Y2D060K2Z4');
         <p>С бесплатной программы <a href="https://iakuban.com/coaching-from-zero/">«Введение в коучинг»</a> —
            это самый мягкий способ понять, ваша ли это профессия. Дальше — курс
            <a href="https://iakuban.com/coaching-as-a-business/">«Профессия коуч»</a> и программа
-           <a href="https://iakuban.com/icf-level-1/">ICF Level 1</a>.</p>
+           <a href="https://iakuban.com/icf-level-1/">Магия и Наука Коучинга. Level 1</a>.</p>
       </details>
       <details>
         <summary>Что даёт аккредитация ICF?</summary>
         <p>ICF — крупнейшая международная федерация коучинга. Обучение на аккредитованных программах
-           засчитывается при получении сертификации коуча ICF (ACC, затем PCC) — это мировой знак качества,
+           засчитывается при получении сертификации коуча по стандартам ICF (ACC, затем PCC) — это мировой знак качества,
            понятный клиентам и компаниям в любой стране.</p>
       </details>
       <details>
@@ -892,8 +959,9 @@ gtag('config','G-Y2D060K2Z4');
       <div>
         <h3>Академия</h3>
         <a href="https://iakuban.com/coaching-from-zero/">Бесплатное обучение</a>
-        <a href="https://iakuban.com/icf-level-1/">ICF Level 1</a>
-        <a href="https://iakuban.com/icf-level-2/">ICF Level 2</a>
+        <a href="https://iakuban.com/icf-level-1/">Магия и Наука Коучинга. Level 1</a>
+        <a href="https://iakuban.com/icf-level-2/">Путь Алхимика. Level 2</a>
+        <a href="https://iakuban.com/reviews/level-1/">Отзывы выпускников</a>
         <a href="https://iakuban.com/about/">О нас</a>
       </div>
       <div>
