@@ -26,12 +26,33 @@ document.addEventListener("DOMContentLoaded", function(event) {
   window.cookiehub.load(cpm);
 });
 </script>
-<!-- Google Analytics (GA4) G-Y2D060K2Z4 + Google Ads AW-17650633966 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2D060K2Z4"></script>
+<!-- Google Analytics (GA4) G-Y2D060K2Z4 + Google Ads AW-17650633966.
+ Внутренний режим (?internal=1, флаг в localStorage) счётчики не поднимает:
+ наши проверки сайта не должны идти ни в GA4, ни в Метрику. Тот же ключ читает
+ Nuxt (nuxt-src/lib/internalMode.ts) и чат (chat-widget.js). -->
 <script>
-gtag('js',new Date());
-gtag('config','G-Y2D060K2Z4');
-gtag('config','AW-17650633966');
+(function(){
+ var internal=false;
+ try{
+  var p=new URLSearchParams(location.search).get('internal');
+  if(p==='1')localStorage.setItem('iakuban_internal','1');
+  if(p==='0'||p==='false')localStorage.removeItem('iakuban_internal');
+  internal=localStorage.getItem('iakuban_internal')==='1';
+ }catch(e){}
+ if(internal){
+  document.addEventListener('DOMContentLoaded',function(){
+   var t=document.querySelectorAll('script[type="text/plain"][data-consent]');
+   for(var i=0;i<t.length;i++)t[i].parentNode.removeChild(t[i]);
+  });
+  return;
+ }
+ var s=document.createElement('script');
+ s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-Y2D060K2Z4';
+ document.head.appendChild(s);
+ gtag('js',new Date());
+ gtag('config','G-Y2D060K2Z4');
+ gtag('config','AW-17650633966');
+})();
 </script>
 <!-- Yandex.Metrika 109783359 — разблокируется CookieHub'ом только при согласии на analytics;
      вебвизор выключен (отдельного согласия на запись сессий нет) -->
@@ -42,8 +63,8 @@ gtag('config','AW-17650633966');
   (window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
   ym(109783359,"init",{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:false});
 </script>
-<title>О нас: академия коучинга Алексея Якубана | Iakuban Coaching Academy</title>
-<meta name="description" content="Iakuban Coaching Academy — академия коучинга Алексея Якубана с аккредитацией ICF. Наша миссия: сделать так, чтобы вы реализовали свою миссию, а ваша миссия реализовала вас. Барселона · онлайн по всему миру.">
+<title>Iakuban Coaching Academy: академия коучинга Алексея Якубана</title>
+<meta name="description" content="Академия коучинга Алексея Якубана с аккредитацией ICF. Наша миссия: чтобы вы реализовали свою миссию, а ваша миссия реализовала вас. Барселона, онлайн.">
 <meta property="og:title" content="О нас: академия коучинга Алексея Якубана">
 <meta property="og:description" content="Академия коучинга Алексея Якубана с аккредитацией ICF Level 1 и Level 2. Наша миссия — сделать так, чтобы вы реализовали свою миссию, а ваша миссия реализовала вас.">
 <meta property="og:type" content="website">
@@ -62,23 +83,72 @@ gtag('config','AW-17650633966');
   "@type": "EducationalOrganization",
   "@id": "https://iakuban.com/#organization",
   "name": "Iakuban Coaching Academy",
-  "alternateName": ["Академия коучинга Алексея Якубана", "Академия Алексея Якубана", "Академия Якубана", "IAKUBAN COACHING ACADEMY S.L."],
+  "legalName": "Iakuban Coaching Academy S.L.",
+  "alternateName": [
+    "Академия коучинга Алексея Якубана",
+    "Академия Алексея Якубана",
+    "Академия Якубана",
+    "IAKUBAN COACHING ACADEMY S.L."
+  ],
   "url": "https://iakuban.com/",
-  "logo": {"@type": "ImageObject", "url": "https://iakuban.com/logo-512.png", "width": 512, "height": 512},
-  "founder": {"@type": "Person", "@id": "https://iakuban.com/#person", "name": "Алексей Якубан", "alternateName": "Aleksei Iakuban", "sameAs": ["https://linkedin.com/in/iakuban"]},
-  "address": {"@type": "PostalAddress", "streetAddress": "Avda Pau Casals 4, Portal A", "postalCode": "08513", "addressLocality": "Prats de Lluçanès, Barcelona", "addressCountry": "ES"},
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://iakuban.com/logo-512.png",
+    "width": 512,
+    "height": 512
+  },
+  "founder": {
+    "@type": "Person",
+    "@id": "https://iakuban.com/#person",
+    "name": "Алексей Якубан",
+    "alternateName": "Aleksei Iakuban",
+    "sameAs": [
+      "https://www.youtube.com/@iakuban",
+      "https://t.me/iakuban"
+    ]
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "ES"
+  },
   "email": "info@iakuban.com",
   "telephone": "+34614206809",
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "ICF Level 1 accredited coaching education program",
+      "description": "Академия аккредитована ICF: программа «Магия и наука коучинга» аккредитована на уровне Level 1, 75 часов.",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "International Coaching Federation",
+        "url": "https://coachingfederation.org"
+      },
+      "validFrom": "2025-03-25",
+      "validUntil": "2028-07-31",
+      "url": "https://apps.coachingfederation.org/eweb/DynamicPage.aspx?webcode=ESS"
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      "credentialCategory": "ICF Level 2 accredited coaching education program",
+      "description": "Академия аккредитована ICF: программа «Путь Алхимика» аккредитована на уровне Level 2, 126 часов.",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "International Coaching Federation",
+        "url": "https://coachingfederation.org"
+      },
+      "validFrom": "2026-08-03",
+      "validUntil": "2029-07-31",
+      "url": "https://apps.coachingfederation.org/eweb/DynamicPage.aspx?webcode=ESS"
+    }
+  ],
   "sameAs": [
     "https://www.youtube.com/@iakuban",
     "https://t.me/iakuban",
-    "https://t.me/iakuban_team",
-    "https://www.instagram.com/aleksei.iakuban/",
-    "https://www.threads.com/@aleksei.iakuban",
-    "https://www.tiktok.com/@iakuban",
-    "https://es.linkedin.com/company/iakuban-coaching-academy",
-    "https://www.b17.ru/iakuban/"
-  ]
+    "https://yandex.ru/maps/org/86349660849/"
+  ],
+  "taxID": "B22895676",
+  "vatID": "ESB22895676",
+  "foundingDate": "2025-08-25"
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -703,9 +773,9 @@ gtag('config','AW-17650633966');
 <!-- ПОЛОСА ФАКТОВ -->
 <section class="facts" aria-label="Академия в цифрах">
   <div class="facts-in">
-    <div class="fact"><div class="n">3</div><div class="d">программы аккредитованы ICF — Level 1, Level 2 и CCE</div></div>
-    <div class="fact"><div class="n">1000+</div><div class="d">выпускников стартовых программ академии</div></div>
-    <div class="fact"><div class="n">65+</div><div class="d">выпускников программы «Магия и Наука Коучинга»</div></div>
+    <div class="fact"><div class="n">3</div><div class="d">программы академии аккредитованы ICF: уровни Level 1, Level 2 и CCE</div></div>
+    <div class="fact"><div class="n">5-й</div><div class="d">поток программы «Магия и наука коучинга»: сейчас идёт набор</div></div>
+    <div class="fact"><div class="n">63</div><div class="d">видеоистории выпускников на <a href="https://iakuban.com/reviews/level-1/">странице отзывов</a></div></div>
     <div class="fact"><div class="n">9,8 из 10</div><div class="d">средняя оценка обучения студентами</div></div>
   </div>
   <p class="facts-note">И мы молодые: день рождения академии — <b>16 августа 2025 года</b>,
@@ -728,8 +798,8 @@ gtag('config','AW-17650633966');
         <h2 class="sec-title">Сначала я нашёл себя. Потом появилась академия</h2>
         <p>Меня зовут Алексей Якубан. Я родился в Тюмени в 1984 году — на данный момент мне 42 года.
            Семнадцать лет я отдал нефтегазовой отрасли: выстроил карьеру в Schlumberger,
-           был ведущим инженером по бурению. Это была большая работа, но не дело моей жизни —
-           она забирала энергию, а не давала её.</p>
+           был ведущим инженером по бурению. Это была большая работа, но не дело моей жизни:
+           она забирала энергию и ничего не давала взамен.</p>
         <p>Я искал себя: запускал бизнесы, пробовал разное. И нашёл себя в коучинге — в 36 лет.
            Поэтому знаю на собственном опыте: самое сложное — сначала найти своё призвание,
            а потом устоять в нём и стать успешным.</p>
@@ -748,9 +818,9 @@ gtag('config','AW-17650633966');
     <div class="mentors-head">
       <p class="sec-eyebrow" style="justify-content:center">Преподавательский круг</p>
       <h2 class="sec-title">И люди, с которыми мы делаем программы</h2>
-      <p>Это не штатная команда, а профессиональный круг академии: приглашённые тренеры
-         уровня MCC, менторы, супервизоры и асессоры ICF — люди, с которыми проходят
-         ваши тренинги, менторинги и супервизии на Level 1 и Level 2.</p>
+      <p>Вокруг академии собран профессиональный круг: приглашённые тренеры уровня MCC,
+         менторы, супервизоры и асессоры ICF. С ними проходят ваши тренинги, менторинги
+         и супервизии на обеих программах академии, уровня Level 1 и Level 2.</p>
     </div>
     <div class="mentors-grid">
       <div class="mcard">
@@ -858,13 +928,16 @@ gtag('config','AW-17650633966');
       <div>
         <h2 class="sec-title">Аккредитация ICF</h2>
         <p>Международная федерация коучинга (ICF) — главный мировой стандарт профессии.
-           Аккредитацию ICF прошли три программы академии: <b>Level 1 «Магия и наука коучинга»</b>,
-           <b>Level 2 «Путь Алхимика»</b> и <b>CCE-курс «Профессия коуч»</b> — содержание,
+           Аккредитацию ICF прошли три программы академии: <b>«Магия и наука коучинга»</b> (уровень Level 1),
+           <b>«Путь Алхимика»</b> (уровень Level 2) и <b>«Профессия коуч»</b> (программа CCE). Содержание,
            менторинг и супервизии соответствуют требованиям федерации.</p>
         <p>Часы обучения засчитываются при международной сертификации коуча —
            от ACC до PCC. Ваш сертификат понятен клиентам и работодателям в любой стране.</p>
         <!-- Перелинковка на гайд о профессии (SEO, 29.08.2026) -->
         <p>Как устроена сама система квалификаций, сколько часов практики нужно на каждом уровне и во что обходится подача заявки: <a href="https://iakuban.com/kak-stat-kouchem-icf/" style="color:#fff;text-decoration:underline;text-underline-offset:3px">как стать коучем ICF</a>, разбор пути по шагам.</p>
+        <!-- Проверяемое доказательство аккредитации: реестр ICF (SEO, 07.09.2026).
+             Прямой ссылки на карточку организации реестр не даёт, поэтому даём инструкцию. -->
+        <p style="font-size:15px;opacity:.8">Аккредитация подтверждается в публичном реестре ICF: <a href="https://apps.coachingfederation.org/eweb/DynamicPage.aspx?webcode=ESS" target="_blank" rel="nofollow noopener" style="color:#fff;text-decoration:underline;text-underline-offset:3px">Проверить в реестре ICF</a>, введите «Iakuban» в поле Accredited Organization (Education Search Service). Аккредитация уровня Level 1 действует до 31.07.2028, уровня Level 2 до 31.07.2029.</p>
       </div>
       <div class="accr-badges">
         <img src="assets/icf_l1.png" alt="Бейдж ICF-аккредитации программы Level 1" width="150" height="150" loading="lazy">
@@ -895,6 +968,58 @@ gtag('config','AW-17650633966');
   </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://iakuban.com/about/#faq",
+  "isPartOf": {
+    "@id": "https://iakuban.com/about/"
+  },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "С чего начать знакомство с академией?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "С бесплатной программы «Введение в коучинг»: это самый мягкий способ понять, ваша ли это профессия. Дальше курс «Профессия коуч» и программа «Магия и наука коучинга»: аккредитация ICF, Level 1."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Что даёт аккредитация ICF?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ICF — крупнейшая международная федерация коучинга. Обучение на аккредитованных программах засчитывается при подаче заявки на квалификацию ICF (ACC, затем PCC). Это мировой знак качества, понятный клиентам и компаниям в любой стране."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Кто ведёт обучение?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Тренинги ведут лично Алексей Якубан, коуч PCC ICF, и Саша Баранова, коуч PCC ICF. С потоками также работают менторы и супервизоры уровня PCC и приглашённые коучи MCC ICF."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Где вы находитесь и как проходит обучение?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Юридически академия — испанская компания Iakuban Coaching Academy S.L. с офисом в Барселоне. Обучение проходит онлайн в Zoom: студенты подключаются из СНГ, Европы, США и Азии."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как задать вопрос?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Проще всего написать команде в Telegram. Ещё мы есть в Instagram, YouTube и других соцсетях, или по почте info@iakuban.com."
+      }
+    }
+  ]
+}
+</script>
 <!-- FAQ -->
 <section class="faq">
   <div class="wrap">
@@ -904,15 +1029,15 @@ gtag('config','AW-17650633966');
     <div class="faq-list">
       <details>
         <summary>С чего начать знакомство с академией?</summary>
-        <p>С бесплатной программы <a href="https://iakuban.com/coaching-from-zero/">«Введение в коучинг»</a> —
-           это самый мягкий способ понять, ваша ли это профессия. Дальше — курс
+        <p>С бесплатной программы <a href="https://iakuban.com/coaching-from-zero/">«Введение в коучинг»</a>:
+           это самый мягкий способ понять, ваша ли это профессия. Дальше курс
            <a href="https://iakuban.com/coaching-as-a-business/">«Профессия коуч»</a> и программа
-           <a href="https://iakuban.com/icf-level-1/">Обучение коучингу. Level 1</a>.</p>
+           <a href="https://iakuban.com/icf-level-1/">«Магия и наука коучинга»: аккредитация ICF, Level 1</a>.</p>
       </details>
       <details>
         <summary>Что даёт аккредитация ICF?</summary>
         <p>ICF — крупнейшая международная федерация коучинга. Обучение на аккредитованных программах
-           засчитывается при получении сертификации коуча по стандартам ICF (ACC, затем PCC) — это мировой знак качества,
+           засчитывается при подаче заявки на квалификацию ICF (ACC, затем PCC). Это мировой знак качества,
            понятный клиентам и компаниям в любой стране.</p>
       </details>
       <details>
@@ -928,9 +1053,9 @@ gtag('config','AW-17650633966');
       </details>
       <details>
         <summary>Как задать вопрос?</summary>
-        <p>Проще всего — написать команде в <a href="https://t.me/iakuban_team" target="_blank" rel="noopener">Telegram</a>.
+        <p>Проще всего написать команде в <a href="https://t.me/iakuban_team" target="_blank" rel="noopener">Telegram</a>.
            Ещё мы есть в <a href="https://www.instagram.com/aleksei.iakuban/" target="_blank" rel="noopener">Instagram</a>,
-           <a href="https://www.youtube.com/@iakuban" target="_blank" rel="noopener">YouTube</a> и других соцсетях —
+           <a href="https://www.youtube.com/@iakuban" target="_blank" rel="noopener">YouTube</a> и других соцсетях,
            или по почте <a href="mailto:info@iakuban.com">info@iakuban.com</a>.</p>
       </details>
     </div>
@@ -944,7 +1069,7 @@ gtag('config','AW-17650633966');
     <div class="foot-cols">
       <div class="foot-about">
         <p>Iakuban Coaching Academy — академия коучинга с аккредитацией ICF
-           и маркетплейс сертифицированных коучей.</p>
+           и маркетплейс коучей, прошедших аккредитованное ICF обучение.</p>
         <a href="mailto:info@iakuban.com">info@iakuban.com</a>
         <a href="tel:+34614206809">+34 614 206 809</a>
         <div class="foot-soc">
@@ -969,8 +1094,8 @@ gtag('config','AW-17650633966');
       <div>
         <h3>Академия</h3>
         <a href="https://iakuban.com/coaching-from-zero/">Бесплатное обучение</a>
-        <a href="https://iakuban.com/icf-level-1/">Обучение коучингу. Level 1</a>
-        <a href="https://iakuban.com/icf-level-2/">Путь Алхимика. Level 2</a>
+        <a href="https://iakuban.com/icf-level-1/">Магия и наука коучинга: аккредитация ICF, Level 1</a>
+        <a href="https://iakuban.com/icf-level-2/">Путь Алхимика: аккредитация ICF, Level 2</a>
         <a href="https://iakuban.com/reviews/level-1/">Отзывы выпускников</a>
         <a href="https://iakuban.com/about/">О нас</a>
       </div>
@@ -984,8 +1109,7 @@ gtag('config','AW-17650633966');
       </div>
     </div>
     <div class="foot-legal">
-      <div>IAKUBAN COACHING ACADEMY, S.L. · AVDA PAU CASALS, NUM 4, PORTAL A,<br>
-           08513 PRATS DE LLUÇANÈS (BARCELONA) · NIF B22895676</div>
+      <div>Iakuban Coaching Academy S.L. · CIF B22895676 · EU VAT ESB22895676</div>
       <div>© 2026 Iakuban Coaching Academy</div>
     </div>
   </div>
